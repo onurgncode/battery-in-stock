@@ -1,0 +1,264 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DBStokModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tblMalGiris">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Marka" Type="nvarchar" MaxLength="50" />
+          <Property Name="Tur" Type="nvarchar" MaxLength="50" />
+          <Property Name="Amper" Type="int" />
+          <Property Name="Hurda" Type="nvarchar" MaxLength="50" />
+          <Property Name="Tarih" Type="nvarchar" MaxLength="50" />
+          <Property Name="Fiyat" Type="int" />
+        </EntityType>
+        <EntityType Name="tblSatis">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SatilanID" Type="int" />
+          <Property Name="Odeme" Type="nvarchar" MaxLength="50" />
+          <Property Name="Tarih" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DBStok.dbo.View_1' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="View_1">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Marka" Type="nvarchar" MaxLength="50" />
+          <Property Name="Tur" Type="nvarchar" MaxLength="50" />
+          <Property Name="Amper" Type="int" />
+          <Property Name="Hurda" Type="nvarchar" MaxLength="50" />
+          <Property Name="MalGirişTarihi" Type="nvarchar" MaxLength="50" />
+          <Property Name="Fiyat" Type="int" />
+          <Property Name="SatilanID" Type="int" />
+          <Property Name="Odeme" Type="nvarchar" MaxLength="50" />
+          <Property Name="SatışTarihi" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DBStok.dbo.View_2' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="View_2">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Tur" Type="nvarchar" MaxLength="50" />
+          <Property Name="Marka" Type="nvarchar" MaxLength="50" />
+          <Property Name="Amper" Type="int" />
+          <Property Name="Hurda" Type="nvarchar" MaxLength="50" />
+          <Property Name="Tarih" Type="nvarchar" MaxLength="50" />
+          <Property Name="Fiyat" Type="int" />
+        </EntityType>
+        <Association Name="FK_tblSatis_tblMalGiris">
+          <End Role="tblMalGiris" Type="Self.tblMalGiris" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblSatis" Type="Self.tblSatis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblMalGiris">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tblSatis">
+              <PropertyRef Name="SatilanID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DBStokModelStoreContainer">
+          <EntitySet Name="tblMalGiris" EntityType="Self.tblMalGiris" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblSatis" EntityType="Self.tblSatis" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="View_1" EntityType="Self.View_1" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_1].[ID] AS [ID], 
+    [View_1].[Marka] AS [Marka], 
+    [View_1].[Tur] AS [Tur], 
+    [View_1].[Amper] AS [Amper], 
+    [View_1].[Hurda] AS [Hurda], 
+    [View_1].[MalGirişTarihi] AS [MalGirişTarihi], 
+    [View_1].[Fiyat] AS [Fiyat], 
+    [View_1].[SatilanID] AS [SatilanID], 
+    [View_1].[Odeme] AS [Odeme], 
+    [View_1].[SatışTarihi] AS [SatışTarihi]
+    FROM [dbo].[View_1] AS [View_1]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="View_2" EntityType="Self.View_2" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_2].[ID] AS [ID], 
+    [View_2].[Tur] AS [Tur], 
+    [View_2].[Marka] AS [Marka], 
+    [View_2].[Amper] AS [Amper], 
+    [View_2].[Hurda] AS [Hurda], 
+    [View_2].[Tarih] AS [Tarih], 
+    [View_2].[Fiyat] AS [Fiyat]
+    FROM [dbo].[View_2] AS [View_2]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_tblSatis_tblMalGiris" Association="Self.FK_tblSatis_tblMalGiris">
+            <End Role="tblMalGiris" EntitySet="tblMalGiris" />
+            <End Role="tblSatis" EntitySet="tblSatis" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DBStokModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tblMalGiris">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Marka" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Tur" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Amper" Type="Int32" />
+          <Property Name="Hurda" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Tarih" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Fiyat" Type="Int32" />
+          <NavigationProperty Name="tblSatis" Relationship="Self.FK_tblSatis_tblMalGiris" FromRole="tblMalGiris" ToRole="tblSatis" />
+        </EntityType>
+        <EntityType Name="tblSatis">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="SatilanID" Type="Int32" />
+          <Property Name="Odeme" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Tarih" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tblMalGiris" Relationship="Self.FK_tblSatis_tblMalGiris" FromRole="tblSatis" ToRole="tblMalGiris" />
+        </EntityType>
+        <Association Name="FK_tblSatis_tblMalGiris">
+          <End Role="tblMalGiris" Type="Self.tblMalGiris" Multiplicity="0..1" />
+          <End Role="tblSatis" Type="Self.tblSatis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblMalGiris">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tblSatis">
+              <PropertyRef Name="SatilanID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DBStokEntities5" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tblMalGiris" EntityType="Self.tblMalGiris" />
+          <EntitySet Name="tblSatis" EntityType="Self.tblSatis" />
+          <AssociationSet Name="FK_tblSatis_tblMalGiris" Association="Self.FK_tblSatis_tblMalGiris">
+            <End Role="tblMalGiris" EntitySet="tblMalGiris" />
+            <End Role="tblSatis" EntitySet="tblSatis" />
+          </AssociationSet>
+          <EntitySet Name="View_1" EntityType="DBStokModel.View_1" />
+          <EntitySet Name="View_2" EntityType="DBStokModel.View_2" />
+        </EntityContainer>
+        <EntityType Name="View_1">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Marka" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Tur" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Amper" Type="Int32" />
+          <Property Name="Hurda" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MalGirişTarihi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Fiyat" Type="Int32" />
+          <Property Name="SatilanID" Type="Int32" />
+          <Property Name="Odeme" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SatışTarihi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="View_2">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Tur" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Marka" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Amper" Type="Int32" />
+          <Property Name="Hurda" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Tarih" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Fiyat" Type="Int32" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DBStokModelStoreContainer" CdmEntityContainer="DBStokEntities5">
+          <EntitySetMapping Name="tblMalGiris">
+            <EntityTypeMapping TypeName="DBStokModel.tblMalGiris">
+              <MappingFragment StoreEntitySet="tblMalGiris">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Marka" ColumnName="Marka" />
+                <ScalarProperty Name="Tur" ColumnName="Tur" />
+                <ScalarProperty Name="Amper" ColumnName="Amper" />
+                <ScalarProperty Name="Hurda" ColumnName="Hurda" />
+                <ScalarProperty Name="Tarih" ColumnName="Tarih" />
+                <ScalarProperty Name="Fiyat" ColumnName="Fiyat" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblSatis">
+            <EntityTypeMapping TypeName="DBStokModel.tblSatis">
+              <MappingFragment StoreEntitySet="tblSatis">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="SatilanID" ColumnName="SatilanID" />
+                <ScalarProperty Name="Odeme" ColumnName="Odeme" />
+                <ScalarProperty Name="Tarih" ColumnName="Tarih" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_1">
+            <EntityTypeMapping TypeName="DBStokModel.View_1">
+              <MappingFragment StoreEntitySet="View_1">
+                <ScalarProperty Name="SatışTarihi" ColumnName="SatışTarihi" />
+                <ScalarProperty Name="Odeme" ColumnName="Odeme" />
+                <ScalarProperty Name="SatilanID" ColumnName="SatilanID" />
+                <ScalarProperty Name="Fiyat" ColumnName="Fiyat" />
+                <ScalarProperty Name="MalGirişTarihi" ColumnName="MalGirişTarihi" />
+                <ScalarProperty Name="Hurda" ColumnName="Hurda" />
+                <ScalarProperty Name="Amper" ColumnName="Amper" />
+                <ScalarProperty Name="Tur" ColumnName="Tur" />
+                <ScalarProperty Name="Marka" ColumnName="Marka" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_2">
+            <EntityTypeMapping TypeName="DBStokModel.View_2">
+              <MappingFragment StoreEntitySet="View_2">
+                <ScalarProperty Name="Fiyat" ColumnName="Fiyat" />
+                <ScalarProperty Name="Tarih" ColumnName="Tarih" />
+                <ScalarProperty Name="Hurda" ColumnName="Hurda" />
+                <ScalarProperty Name="Amper" ColumnName="Amper" />
+                <ScalarProperty Name="Marka" ColumnName="Marka" />
+                <ScalarProperty Name="Tur" ColumnName="Tur" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

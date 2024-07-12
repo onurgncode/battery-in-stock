@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DBStokModelStoreContainer" CdmEntityContainer="DBStokEntities5">
+    <EntitySetMapping Name="tblMalGiris">
+      <EntityTypeMapping TypeName="DBStokModel.tblMalGiris">
+        <MappingFragment StoreEntitySet="tblMalGiris">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Marka" ColumnName="Marka" />
+          <ScalarProperty Name="Tur" ColumnName="Tur" />
+          <ScalarProperty Name="Amper" ColumnName="Amper" />
+          <ScalarProperty Name="Hurda" ColumnName="Hurda" />
+          <ScalarProperty Name="Tarih" ColumnName="Tarih" />
+          <ScalarProperty Name="Fiyat" ColumnName="Fiyat" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblSatis">
+      <EntityTypeMapping TypeName="DBStokModel.tblSatis">
+        <MappingFragment StoreEntitySet="tblSatis">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="SatilanID" ColumnName="SatilanID" />
+          <ScalarProperty Name="Odeme" ColumnName="Odeme" />
+          <ScalarProperty Name="Tarih" ColumnName="Tarih" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="View_1">
+      <EntityTypeMapping TypeName="DBStokModel.View_1">
+        <MappingFragment StoreEntitySet="View_1">
+          <ScalarProperty Name="SatışTarihi" ColumnName="SatışTarihi" />
+          <ScalarProperty Name="Odeme" ColumnName="Odeme" />
+          <ScalarProperty Name="SatilanID" ColumnName="SatilanID" />
+          <ScalarProperty Name="Fiyat" ColumnName="Fiyat" />
+          <ScalarProperty Name="MalGirişTarihi" ColumnName="MalGirişTarihi" />
+          <ScalarProperty Name="Hurda" ColumnName="Hurda" />
+          <ScalarProperty Name="Amper" ColumnName="Amper" />
+          <ScalarProperty Name="Tur" ColumnName="Tur" />
+          <ScalarProperty Name="Marka" ColumnName="Marka" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="View_2">
+      <EntityTypeMapping TypeName="DBStokModel.View_2">
+        <MappingFragment StoreEntitySet="View_2">
+          <ScalarProperty Name="Fiyat" ColumnName="Fiyat" />
+          <ScalarProperty Name="Tarih" ColumnName="Tarih" />
+          <ScalarProperty Name="Hurda" ColumnName="Hurda" />
+          <ScalarProperty Name="Amper" ColumnName="Amper" />
+          <ScalarProperty Name="Marka" ColumnName="Marka" />
+          <ScalarProperty Name="Tur" ColumnName="Tur" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

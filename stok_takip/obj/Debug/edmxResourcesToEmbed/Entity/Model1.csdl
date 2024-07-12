@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DBStokModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="tblMalGiris">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="Marka" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Tur" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Amper" Type="Int32" />
+    <Property Name="Hurda" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Tarih" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Fiyat" Type="Int32" />
+    <NavigationProperty Name="tblSatis" Relationship="Self.FK_tblSatis_tblMalGiris" FromRole="tblMalGiris" ToRole="tblSatis" />
+  </EntityType>
+  <EntityType Name="tblSatis">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="SatilanID" Type="Int32" />
+    <Property Name="Odeme" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Tarih" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tblMalGiris" Relationship="Self.FK_tblSatis_tblMalGiris" FromRole="tblSatis" ToRole="tblMalGiris" />
+  </EntityType>
+  <Association Name="FK_tblSatis_tblMalGiris">
+    <End Role="tblMalGiris" Type="Self.tblMalGiris" Multiplicity="0..1" />
+    <End Role="tblSatis" Type="Self.tblSatis" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblMalGiris">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="tblSatis">
+        <PropertyRef Name="SatilanID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DBStokEntities5" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="tblMalGiris" EntityType="Self.tblMalGiris" />
+    <EntitySet Name="tblSatis" EntityType="Self.tblSatis" />
+    <AssociationSet Name="FK_tblSatis_tblMalGiris" Association="Self.FK_tblSatis_tblMalGiris">
+      <End Role="tblMalGiris" EntitySet="tblMalGiris" />
+      <End Role="tblSatis" EntitySet="tblSatis" />
+    </AssociationSet>
+    <EntitySet Name="View_1" EntityType="DBStokModel.View_1" />
+    <EntitySet Name="View_2" EntityType="DBStokModel.View_2" />
+  </EntityContainer>
+  <EntityType Name="View_1">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="Marka" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Tur" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Amper" Type="Int32" />
+    <Property Name="Hurda" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MalGirişTarihi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Fiyat" Type="Int32" />
+    <Property Name="SatilanID" Type="Int32" />
+    <Property Name="Odeme" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SatışTarihi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="View_2">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="Tur" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Marka" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Amper" Type="Int32" />
+    <Property Name="Hurda" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Tarih" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Fiyat" Type="Int32" />
+  </EntityType>
+</Schema>
